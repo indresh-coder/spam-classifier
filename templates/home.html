@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="C:/Users/Admin/Documents/ML Project/Spam/deploy/static/styles.css">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div id="brandname">
+				 Spam Message Detector using NLP 
+			</div>
+			<h2>Spam message detector for Email</h2>
+		</div>
+	</header>
+	<div class="ml-container">
+		<form action="{{ url_for('predict')}}" method="post">
+			<p>Enter your Message/Mail here which you want to predict Spam or Ham</p>
+			<textarea name="message" rows="6" cols="50"></textarea>
+			<br>
+			<input type="submit" class="but-info" value="Predict">
+		</form>
+		
+	</div>
+
+</body>
+<footer class="foot">
+	<div class="footcontainer">
+		<p class="copyright">Copyright 2021 @Indresh</p>
+		
+	</div>
+</footer>
+</html>
