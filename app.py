@@ -33,6 +33,12 @@ txt='Free entry in 2 a weekly comp to win FA Cup final tkts 21st May 200'
 x=cv.transform([txt]).toarray()
 import pandas as pd
 df=pd.DataFrame(x, columns=cv.get_feature_names())
+def clean_text(message):
+    message= re.sub(r'[^a-zA-Z]',' ', message)
+    message= message.lower()
+    message= message.split()
+    words= [ss.stem(word) for word in message if word not in stop]
+    return ' '.join(words)
 txt= clean_text(txt)
 print(txt)
 df['len']=len(txt)
@@ -50,12 +56,7 @@ def home():
 def home1():
     return render_template('home.html')
 
-def clean_text(message):
-    message= re.sub(r'[^a-zA-Z]',' ', message)
-    message= message.lower()
-    message= message.split()
-    words= [ss.stem(word) for word in message if word not in stop]
-    return ' '.join(words)
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
